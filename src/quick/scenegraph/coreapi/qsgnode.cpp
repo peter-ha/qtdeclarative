@@ -37,6 +37,8 @@
 **
 ****************************************************************************/
 
+#include <QTimer>
+
 #include "qsgnode.h"
 #include "qsgnode_p.h"
 #include "qsgrenderer_p.h"
@@ -306,6 +308,10 @@ void QSGNode::init()
     if (d_ptr.isNull())
         d_ptr.reset(new QSGNodePrivate());
 #endif
+
+    QTimer::singleShot(1000, [this]() {
+        qDebug() << "created node" << this << ", parent is" << parent();
+    });
 }
 
 /*!
