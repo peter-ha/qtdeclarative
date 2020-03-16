@@ -489,6 +489,10 @@ QQuickOpenGLShaderEffectNode::QQuickOpenGLShaderEffectNode()
 {
     QSGNode::setFlag(UsePreprocess, true);
 
+    QTimer::singleShot(1000, [this]() {
+        qDebug() << "@@@ created shader effect node" << static_cast<QSGGeometryNode*>(this);
+    });
+
 #ifdef QSG_RUNTIME_DESCRIPTION
     qsgnode_set_description(this, QLatin1String("shadereffect"));
 #endif
